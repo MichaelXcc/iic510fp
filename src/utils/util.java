@@ -2,6 +2,10 @@ package utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.UUID;
 
 public class util {
@@ -38,6 +42,14 @@ public class util {
         System.out.println("Hash password created => " + sbHash.toString());
 
         return sbHash.toString();
+    }
+    public static String getDateString(String timezone){
+        TimeZone time = TimeZone.getTimeZone(timezone);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        TimeZone.setDefault(time);
+        Calendar calendar = Calendar.getInstance();
+        Date date = calendar.getTime();
+        return format.format(date);
     }
 
 }

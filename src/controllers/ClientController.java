@@ -42,7 +42,6 @@ public class ClientController implements Initializable {
         Platform.runLater(() -> customResize(tblAccounts));
 
         userID = dataMap.get("usrID");
-        System.out.println("初始化id:"+ userID);
     }
 
     public void customResize(TableView<?> view) {
@@ -84,7 +83,6 @@ public class ClientController implements Initializable {
     }
 
     public void createTransaction() throws IOException {
-        System.out.println("accout:" + cm.checkBankInfo(userID));
         if (cm.checkBankInfo(userID)) {
             errorLog.setText("You already have an account");
             return;

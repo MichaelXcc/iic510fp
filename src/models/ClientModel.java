@@ -36,14 +36,9 @@ public class ClientModel extends DBConnect{
 
         //simulate bank data affliation of client
         custBank = new BankModule();
-//        custBank.setBankId(100);
-//        custBank.setBankName("Bank of IIT");
-//        custBank.setBankAddress("10 W 35th St, Chicago, IL 60616");
     }
 
     public Boolean checkBankInfo(String userId) {
-        System.out.println("加入账户查看账户");
-        System.out.println("user id " + userId);
         String sql = String.format("SELECT * from %s where user_id='%s';", TableName, userId);
 
         try {

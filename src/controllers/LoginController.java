@@ -72,7 +72,7 @@ public class LoginController {
         Boolean isValid = model.getCredentials(username, password);
 
         if (!isValid) {
-            nameError.setText("User does not exist!");
+            nameError.setText("User does not exist or password error");
             return;
         }
         dataMap.put("usrID", model.getId());

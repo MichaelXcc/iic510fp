@@ -1,6 +1,8 @@
 package models;
 
 
+import utils.util;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
@@ -66,7 +68,7 @@ public class AccountModule {
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
                 TableName,
                 balance,
-                getDateString("1"),
+                util.getDateString("1"),
                 userID);
 
         try {
@@ -84,7 +86,7 @@ public class AccountModule {
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
                 TableName,
                 balance,
-                getDateString("1"),
+                util.getDateString("1"),
                 userID);
 
         try {
@@ -96,13 +98,5 @@ public class AccountModule {
         }
     }
 
-    public static String getDateString(String timezone){
-        TimeZone time = TimeZone.getTimeZone(timezone);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        TimeZone.setDefault(time);
-        Calendar calendar = Calendar.getInstance();
-        Date date = calendar.getTime();
-        return format.format(date);
-    }
 
 }
