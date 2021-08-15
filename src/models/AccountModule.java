@@ -40,22 +40,6 @@ public class AccountModule {
         }
     }
 
-    public void initAccount(String user_id) {
-        String insertSql = String.format("INSERT INTO %s (user_id, balance)" +
-                                        "VALUES ('%s', %f);",
-                                        TableName,
-                                        user_id,
-                                        0.00
-                                        );
-        try {
-            stmt = conn.connect().createStatement();
-            stmt.executeUpdate(insertSql);
-            conn.connect().close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        System.out.println("Records inserted!");
-    }
 
     public Double getAccountBalance(String user_id) {
         Double result = 0.00;
@@ -77,7 +61,7 @@ public class AccountModule {
     }
 
 
-    public void depositAccount(String userID, Double amount) {
+    public void depositAccount(Double amount, String userID) {
         balance = getAccountBalance(userID) + amount;
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
                 TableName,
@@ -95,7 +79,7 @@ public class AccountModule {
 
     }
 
-    public void withdrawal(String userID, Double amount){
+    public void withdrawal(Double amount, String userID){
         balance = getAccountBalance(userID) - amount;
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
                 TableName,

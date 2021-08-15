@@ -6,7 +6,7 @@ public class DBConnect {
 //    static final String DB_URL = "jdbc:mysql://www.papademas.net:3307/510fp?autoReconnect=true&useSSL=false&serverTimezone=UTC";
 //    static final String USER = "fp510", PASS = "510";
 //
-    static final String DB_URL = "jdbc:mysql://10.91.215.42:3306/init?autoReconnect=true&useSSL=false&serverTimezone=UTC";
+    static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/init?autoReconnect=true&useSSL=false&serverTimezone=UTC";
     static final String USER = "root";
     static final String PASS = "123456";
     protected Connection connection;

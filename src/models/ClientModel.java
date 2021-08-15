@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ClientModel extends DBConnect implements User<BankModule>{
+public class ClientModel extends DBConnect{
 
-    private String userId;
     private int pid;
-    private double balance;
     private AccountModule accountModule;
     private final String TableName = "account";
+    private double balance;
+
     ResultSet rs = null;
 
     // Declare DB objects
@@ -22,6 +22,14 @@ public class ClientModel extends DBConnect implements User<BankModule>{
     Statement stmt = null;
     //set up Bank object
     BankModule custBank;
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
 
     public ClientModel() {
         conn = new DBConnect();
@@ -33,36 +41,10 @@ public class ClientModel extends DBConnect implements User<BankModule>{
 //        custBank.setBankAddress("10 W 35th St, Chicago, IL 60616");
     }
 
-    /* getters & setters */
-
-    public String getUserid() {
-        return userId;
-    }
-
-    public void setUserid(String userId) {
-        this.userId = userId;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
-    public int getPid() {
-        return pid;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(Double balance) {
-        this.balance = balance;
-    }
-
-
-    public Boolean checkBankInfo() {
-
-        String sql = String.format("SELECT * from %s where user_id='%s';", TableName, getUserid());
+    public Boolean checkBankInfo(String userId) {
+        System.out.println("加入账户查看账户");
+        System.out.println("user id " + userId);
+        String sql = String.format("SELECT * from %s where user_id='%s';", TableName, userId);
 
         try {
             stmt = conn.connect().createStatement();
@@ -75,14 +57,13 @@ public class ClientModel extends DBConnect implements User<BankModule>{
         return false;
     }
 
-    // INSERT INTO METHOD
-    public void insertRecord(String userId, double bal) {
+    public void insertRecord(double bal, String userId) {
         try {
-            setUserid(userId);
             // Execute a query
             System.out.println("Inserting record into the table...");
             stmt = conn.getConnection().createStatement();
             String sql = null;
+            System.out.println("user id:" + userId);
 
             sql = " insert into account (user_id, balance) values('" + userId + "', '" + bal + "')";
 
@@ -96,17 +77,18 @@ public class ClientModel extends DBConnect implements User<BankModule>{
         }
     }
 
-    public List<ClientModel> getAccounts(String userId) {
+    // 增加用户信息
+    public List<ClientModel> getAccounts(String userID) {
         List<ClientModel> accounts = new ArrayList<>();
         String query = "SELECT user_id,balance FROM account WHERE user_id = ?;";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1,userId);
+            statement.setString(1, userID);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 ClientModel account = new ClientModel();
                 // grab record data by table field name into ClientModel account object
 //                account.setPid(resultSet.getInt("pid"));
-                account.setUserid(resultSet.getString("user_id"));
+//                account.setUserID(resultSet.getString("user_id"));
                 account.setBalance(resultSet.getDouble("balance"));
                 // add account data to arraylist
                 accounts.add(account);
@@ -114,14 +96,12 @@ public class ClientModel extends DBConnect implements User<BankModule>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        // return arraylist
-        System.out.println(accounts.toString());
         return accounts;
     }
 
-    @Override
-    public BankModule getClientInfo() {
-        // TODO Auto-generated method stub
-        return custBank;
-    }
+//    @Override
+//    public BankModule getClientInfo() {
+//        // TODO Auto-generated method stub
+//        return custBank;
+//    }
 }

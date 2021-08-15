@@ -11,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import models.UsersModule;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class LoginController {
@@ -26,6 +28,8 @@ public class LoginController {
 
     private final UsersModule model;
 
+    public static Map<String, String> dataMap = new HashMap<String, String>();
+
     public LoginController() {
         model = new UsersModule();
     }
@@ -37,11 +41,11 @@ public class LoginController {
         if (!model.register(username, password)) {
             nameError.setText("User name existing");
         }
-
+        dataMap.put("usrID", model.getId());
+        System.out.println("设置id：" + dataMap.get("usrID"));
     }
 
     public void login() {
-
         nameError.setText("");
         String username = this.txtUsername.getText();
         String password = this.txtPassword.getText();
@@ -62,36 +66,31 @@ public class LoginController {
         }
 //        authentication check
         checkCredentials(username, password);
-
     }
 
     public void checkCredentials(String username, String password) {
         Boolean isValid = model.getCredentials(username, password);
+
         if (!isValid) {
             nameError.setText("User does not exist!");
             return;
         }
+        dataMap.put("usrID", model.getId());
+        System.out.println("设置id：" + dataMap.get("usrID"));
         try {
             AnchorPane root;
             if (model.isAdmin() && isValid) {
                 // If user is admin, inflate admin view
-
                 root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/AdminView.fxml"));
                 Main.stage.setTitle("Admin View");
-
             } else {
                 // If user is customer, inflate customer view
-
                 root = (AnchorPane) FXMLLoader.load(getClass().getResource("/views/ClientView.fxml"));
                 // ***Set user ID acquired from db****
-                String user_id = model.();
-                ClientController.setUserid(user_id);
                 Main.stage.setTitle("Client View");
             }
-
             Scene scene = new Scene(root);
             Main.stage.setScene(scene);
-
         } catch (Exception e) {
             System.out.println("Error occured while inflating view: " + e);
         }

@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Arrays;
+
 public class TestDB {
     public static void main(String[] args) {
         // USER
@@ -19,5 +21,7 @@ public class TestDB {
 //        accountDB.getAccountBalance("fcda9e0c-513f-4829-9fb5-e5233497a2e0");
 //        accountDB.depositAccount("fcda9e0c-513f-4829-9fb5-e5233497a2e0",100.00);
 //        accountDB.depositAccount("fcda9e0c-513f-4829-9fb5-e5233497a2e0",100.00);
+        String a = "110.1001";
+        System.out.println(Arrays.toString(a.split("\\.")));
     }
 }

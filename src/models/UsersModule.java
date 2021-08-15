@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import utils.*;
 
-public class UsersModule extends Bank{
+public class UsersModule extends DBConnect{
     DBConnect conn = null;
     Statement stmt = null;
     ResultSet rs = null;
@@ -20,6 +20,23 @@ public class UsersModule extends Bank{
         conn = new DBConnect();
     }
 
+    private Boolean admin;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public Boolean isAdmin() {
+        return admin;
+    }
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
+    }
+
+
     public Boolean getCredentials(String username, String password){
 
         String query = "SELECT * FROM user_info WHERE user_name = ? and user_pwd = ?;";
@@ -28,7 +45,9 @@ public class UsersModule extends Bank{
             stmt.setString(2, util.createHashes(password));
             ResultSet rs = stmt.executeQuery();
             if(rs.next()) {
-                setUserID(rs.getString("user_id"));
+                setId(rs.getString("user_id"));
+                System.out.println("---");
+                System.out.println(rs.getString("user_id"));
                 setAdmin(rs.getBoolean("admin"));
                 return true;
             }
@@ -37,7 +56,7 @@ public class UsersModule extends Bank{
         }
         return false;
     }
-    // 初始化
+    // init table
     public void initTable() {
         try {
             System.out.println("Connecting to database to create User Table ...");
@@ -59,7 +78,7 @@ public class UsersModule extends Bank{
         }
     }
 
-    // 注册时候检查重复
+    // register check user
     public Boolean checkUserInfo(String userName) {
         String sql = String.format("SELECT * from %s where user_name='%s';", TableName, userName);
 
@@ -74,38 +93,17 @@ public class UsersModule extends Bank{
         }
     }
 
-//    public Boolean login(String userName,String userPwd) {
-//        if (!checkUserInfo(userName)) {
-//            System.out.println("名称不存在");
-//            return false;
-//        }
-//        String encryptResult = util.encryptAndDecrypt(userPwd, secret);
-//        String logSql = String.format("select * from %s where user_name='%s' and user_pwd='%s';",
-//                TableName,
-//                userName,
-//                encryptResult);
-//        try {
-//            stmt = conn.connect().createStatement();
-//            rs = stmt.executeQuery(logSql);
-//            conn.connect().close();
-//            return rs.next();
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//            return false;
-//        }
-//    }
 
     public Boolean register(String userName,String userPwd) throws NoSuchAlgorithmException {
         if (checkUserInfo(userName)) {
-            System.out.println("名称存在");
             return false;
         }
-
-//        String encryptResult = util.encryptAndDecrypt(userPwd, secret);
+        String userID = util.getUUID();
+        setId(userID);
         String insertSql = String.format("INSERT INTO %s (user_id, user_name, user_pwd)" +
                 "VALUES ('%s', '%s', '%s');",
                 TableName,
-                util.getUUID(),
+                userID,
                 userName,
                 util.createHashes(userPwd));
         try {
