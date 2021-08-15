@@ -40,45 +40,56 @@ public class BankModule {
         }
     }
 
-    public void updateRecords(Map<String, String> info) {
+    public Boolean updateRecords(Map<String, String> info) {
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
-                TableName,
+                "account",
                 Double.parseDouble(info.get("newBalance")),
                 util.getDateString("1"),
                 info.get("updateID"));
-
         try {
             stmt = conn.connect().createStatement();
             stmt.executeUpdate(updateSql);
             conn.connect().close();
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return false;
         }
 
     }
 
-    public void deleteRecords(Map<String, String> info) {
+    public Boolean deleteRecords(Map<String, String> info) {
+        if (checkInfo(info.get("deleteID"))) {
+            return true;
+        }
+
         String updateSql = String.format("delete from %s where user_id='%s'",
-                TableName,
+                "account",
                 info.get("updateID"));
         try {
             stmt = conn.connect().createStatement();
             stmt.executeUpdate(updateSql);
             conn.connect().close();
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            return false;
         }
     }
 
 
-    public void insertRecords(Map<String,String> info) {
+    public Boolean insertRecords(Map<String,String> info) {
+        if (checkInfo(info.get("textID"))) {
+            return true;
+        }
+
         String formatToSql = String.format("INSERT INTO %s (user_id, age, sex, region) " +
                         "VALUES ('%s', '%s', '%s', '%s');",
                 TableName,
-                info.get("usrID"),
-                info.get("age"),
-                info.get("sex"),
-                info.get("region")
+                info.get("textID"),
+                info.get("textAge"),
+                info.get("textSex"),
+                info.get("textRegion")
                 );
         try {
             stmt = conn.connect().createStatement();
@@ -88,11 +99,14 @@ public class BankModule {
             throwables.printStackTrace();
         }
         System.out.println("Records inserted!");
+        return false;
     }
 
 
-    public Boolean checkBankInfo(String bankName) {
-        String sql = String.format("SELECT * from %s where bank_name='%s';", TableName, bankName);
+    public Boolean checkInfo(String userId) {
+        String sql = String.format("SELECT * from %s where user_id ='%s';",
+                TableName,
+                userId);
 
         try {
             stmt = conn.connect().createStatement();
@@ -101,30 +115,8 @@ public class BankModule {
             return rs.next();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            return true;
         }
-    }
-
-
-    public Boolean bankLogin(String bankName, String bankpwd) {
-        if (!checkBankInfo(bankName)) {
-            System.out.println("名称不存在");
-            return false;
-        }
-        String encryptResult = util.encryptAndDecrypt(bankpwd, secret);
-        String logSql = String.format("select * from %s where user_name='%s' and user_pwd='%s';",
-                TableName,
-                bankName,
-                encryptResult);
-        try {
-            stmt = conn.connect().createStatement();
-            rs = stmt.executeQuery(logSql);
-            conn.connect().close();
-            return rs.next();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
-        }
+        return false;
     }
 
 

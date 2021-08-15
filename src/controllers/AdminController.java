@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.scene.control.Label;
 import models.BankModule;
 import models.DBConnect;
 import application.DynamicTable;
@@ -15,32 +16,17 @@ import javafx.scene.layout.Pane;
 public class AdminController {
 
     @FXML
-    private Pane pane1;
+    private Pane pane1, pane2, pane3;
     @FXML
-    private Pane pane2;
+    private TextField textID, textAge, textSex, textRegion, textName, updateID, newBalance, deleteID;
     @FXML
-    private Pane pane3;
-    @FXML
-    private TextField textID;
-    @FXML
-    private TextField textAge;
-    @FXML
-    private TextField textSex;
-    @FXML
-    private TextField textRegion;
-    @FXML
-    private TextField textName;
-    @FXML
-    private TextField updateID;
-    @FXML
-    private TextField newBalance;
-
+    private Label logError;
     BankModule bm;
 
 
     DBConnect conn = null;
     Statement stmt = null;
-    private String userID;
+    String userID;
     Map<String, String> dataMap = LoginController.dataMap;
 
 
@@ -54,12 +40,10 @@ public class AdminController {
 
         DynamicTable d = new DynamicTable();
         // call method from DynamicTable class and pass some arbitrary query string
-//        d.buildData("Select * from account");
         d.buildData("Select a.user_id, a.balance, a.createTime, a.updateTime, IFNULL(b.age,\"-\"), IFNULL(b.sex,\"-\") ,IFNULL(b.region, \"-\")from account as a LEFT JOIN bank as b ON a.user_id=b.user_id;");
     }
 
     public void updateRec() {
-
         pane3.setVisible(false);
         pane2.setVisible(false);
         pane1.setVisible(true);
@@ -67,14 +51,12 @@ public class AdminController {
     }
 
     public void deleteRec() {
-
         pane1.setVisible(false);
         pane2.setVisible(true);
         pane3.setVisible(false);
     }
 
     public void addBankRec() {
-
         pane1.setVisible(false);
         pane2.setVisible(false);
         pane3.setVisible(true);
@@ -82,26 +64,35 @@ public class AdminController {
     }
 
     public void submitBank() {
-
-        dataMap.put("age", textAge.getText());
-        dataMap.put("sex", textSex.getText());
-        dataMap.put("region", textRegion.getText());
-        dataMap.put("name", textName.getText());
-        bm.insertRecords(dataMap);
+        logError.setText("");
+        dataMap.put("textID", textID.getText());
+        dataMap.put("textAge", textAge.getText());
+        dataMap.put("textSex", textSex.getText());
+        dataMap.put("textRegion", textRegion.getText());
+        dataMap.put("textName", textName.getText());
+        if (bm.insertRecords(dataMap)) {
+            logError.setText("user already exists ");
+        }
     }
 
     public void submitUpdate() {
+        logError.setText("");
         dataMap.put("updateID", updateID.getText());
         dataMap.put("newBalance", newBalance.getText());
-        bm.updateRecords(dataMap);
+        if (!bm.updateRecords(dataMap)) {
+            logError.setText("update error");
+            return;
+        }
         System.out.println("Update Submit button pressed");
-
     }
 
     public void submitDelete() {
-        dataMap.put("updateID", updateID.getText());
-        dataMap.put("newBalance", newBalance.getText());
-        bm.deleteRecords(dataMap);
+        logError.setText("");
+        dataMap.put("deleteID", deleteID.getText());
+        if (!bm.deleteRecords(dataMap)) {
+            logError.setText("delete error");
+            return;
+        }
         System.out.println("Delete Submit button pressed");
 
     }

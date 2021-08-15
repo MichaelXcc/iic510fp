@@ -23,8 +23,8 @@
             </effect>
             <children>
                 <Button layoutX="158.0" layoutY="229.0" mnemonicParsing="false" onAction="#submitUpdate" text="Submit" />
-                <TextField fx:id="updateID" layoutX="104.0" layoutY="151.0" />
-                <TextField fx:id="newBalance" layoutX="104.0" layoutY="48.0" />
+                <TextField fx:id="newBalance" layoutX="104.0" layoutY="151.0" />
+                <TextField fx:id="updateID" layoutX="104.0" layoutY="48.0" />
                 <Label layoutX="109.0" layoutY="22.0" text="Enter desired ID" />
                 <Label layoutX="109.0" layoutY="109.0" text="Enter new balance" />
                 <Label layoutX="14.0" layoutY="234.0" text="Record Updated?" textFill="#803131" />
@@ -36,7 +36,7 @@
             </effect>
             <children>
                 <Button layoutX="145.0" layoutY="171.0" mnemonicParsing="false" onAction="#submitDelete" text="Submit" />
-                <TextField layoutX="105.0" layoutY="93.0" />
+                <TextField fx:id="deleteID" layoutX="105.0" layoutY="93.0" />
                 <Label layoutX="109.0" layoutY="55.0" text="Enter desired ID" />
                 <Label layoutX="14.0" layoutY="176.0" text="Record Deleted?" textFill="#803131" />
             </children>
@@ -62,5 +62,6 @@
                 <TextField fx:id="textName" layoutX="262.0" layoutY="114.0" prefHeight="20.0" prefWidth="67.0" />
             </children>
         </Pane>
+        <Label fx:id="logError" layoutX="176.0" layoutY="31.0" prefHeight="30.0" prefWidth="373.0" />
     </children>
 </AnchorPane>

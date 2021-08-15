@@ -23,8 +23,8 @@
             </effect>
             <children>
                 <Button layoutX="158.0" layoutY="229.0" mnemonicParsing="false" onAction="#submitUpdate" text="Submit" />
-                <TextField layoutX="104.0" layoutY="151.0" />
-                <TextField layoutX="104.0" layoutY="48.0" />
+                <TextField fx:id="newBalance" layoutX="104.0" layoutY="151.0" />
+                <TextField fx:id="updateID" layoutX="104.0" layoutY="48.0" />
                 <Label layoutX="109.0" layoutY="22.0" text="Enter desired ID" />
                 <Label layoutX="109.0" layoutY="109.0" text="Enter new balance" />
                 <Label layoutX="14.0" layoutY="234.0" text="Record Updated?" textFill="#803131" />
@@ -48,19 +48,20 @@
             </effect>
             <children>
                 <Button layoutX="140.0" layoutY="242.0" mnemonicParsing="false" onAction="#submitBank" text="Submit" />
-                <TextField fx:id="txtName" layoutX="91.0" layoutY="71.0" />
+                <TextField fx:id="textID" layoutX="91.0" layoutY="71.0" />
                 <Label layoutX="92.0" layoutY="25.0" text="Add Bank" />
                 <Label layoutX="11.0" layoutY="246.0" text="Bank Added?" textFill="#803131" />
-                <TextField fx:id="txtAddress" layoutX="91.0" layoutY="114.0" prefHeight="20.0" prefWidth="67.0" />
+                <TextField fx:id="textAge" layoutX="91.0" layoutY="114.0" prefHeight="20.0" prefWidth="67.0" />
                 <Label layoutX="21.0" layoutY="76.0" text="user id" />
                 <Label layoutX="21.0" layoutY="119.0" text="age" />
-            <Label layoutX="22.0" layoutY="156.0" text="sex" />
-            <TextField fx:id="txtAddress1" layoutX="91.0" layoutY="152.0" prefHeight="26.0" prefWidth="67.0" />
-            <Label layoutX="22.0" layoutY="195.0" text="region" />
-            <TextField fx:id="txtAddress11" layoutX="91.0" layoutY="191.0" prefHeight="20.0" prefWidth="67.0" />
-            <Label layoutX="195.0" layoutY="119.0" text="user name" />
-            <TextField fx:id="txtAddress2" layoutX="262.0" layoutY="114.0" prefHeight="20.0" prefWidth="67.0" />
+                <Label layoutX="22.0" layoutY="156.0" text="sex" />
+                <TextField fx:id="textSex" layoutX="91.0" layoutY="152.0" prefHeight="26.0" prefWidth="67.0" />
+                <Label layoutX="22.0" layoutY="195.0" text="region" />
+                <TextField fx:id="textRegion" layoutX="91.0" layoutY="191.0" prefHeight="20.0" prefWidth="67.0" />
+                <Label layoutX="195.0" layoutY="119.0" text="user name" />
+                <TextField fx:id="textName" layoutX="262.0" layoutY="114.0" prefHeight="20.0" prefWidth="67.0" />
             </children>
         </Pane>
+      <Label layoutX="176.0" layoutY="31.0" prefHeight="30.0" prefWidth="373.0" />
     </children>
 </AnchorPane>

@@ -13,7 +13,7 @@ public class UsersModule extends DBConnect{
     DBConnect conn = null;
     Statement stmt = null;
     ResultSet rs = null;
-    private final String TableName = "user_info";
+    private final String TableName = "user";
     private final char secret = '3';
 
     public UsersModule() {
@@ -39,7 +39,7 @@ public class UsersModule extends DBConnect{
 
     public Boolean getCredentials(String username, String password){
 
-        String query = "SELECT * FROM user_info WHERE user_name = ? and user_pwd = ?;";
+        String query = "SELECT * FROM user WHERE user_name = ? and user_pwd = ?;";
         try(PreparedStatement stmt = conn.connect().prepareStatement(query)) {
             stmt.setString(1, username);
             stmt.setString(2, util.createHashes(password));
@@ -63,7 +63,7 @@ public class UsersModule extends DBConnect{
             System.out.println("Connected database successfully...");
             stmt = conn.connect().createStatement();
 
-            String createSqlTable = "CREATE TABLE user_info " +
+            String createSqlTable = "CREATE TABLE user " +
                                     "(pid INTEGER not NULL AUTO_INCREMENT, " +
                                     " user_id VARCHAR(128) not null, " +
                                     " user_name VARCHAR(64) not null, " +
