@@ -72,7 +72,6 @@ public class ClientModel extends DBConnect{
         }
     }
 
-    // 增加用户信息
     public List<ClientModel> getAccounts(String userID) {
         List<ClientModel> accounts = new ArrayList<>();
         String query = "SELECT user_id,balance FROM account WHERE user_id = ?;";
@@ -94,9 +93,4 @@ public class ClientModel extends DBConnect{
         return accounts;
     }
 
-//    @Override
-//    public BankModule getClientInfo() {
-//        // TODO Auto-generated method stub
-//        return custBank;
-//    }
 }

@@ -10,13 +10,14 @@
     <children>
         <Button layoutX="185.0" layoutY="259.0" mnemonicParsing="false" onAction="#viewAccounts" text="View Account" />
         <Button layoutX="317.0" layoutY="259.0" mnemonicParsing="false" onAction="#createTransaction" prefHeight="27.0" text="Create Account" AnchorPane.rightAnchor="180.5" />
-        <Button layoutX="234.0" layoutY="377.0" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="134.0" text="Logout" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="232.0" AnchorPane.topAnchor="377.0" />
+        <Button layoutX="185.0" layoutY="343.0" mnemonicParsing="false" onAction="#logout" prefHeight="34.0" prefWidth="227.0" text="L o g o u t" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="185.0" AnchorPane.rightAnchor="188.0" AnchorPane.topAnchor="343.0" />
         <TableView fx:id="tblAccounts" editable="true" layoutX="188.0" layoutY="86.0" prefHeight="94.0" prefWidth="227.0">
             <columns>
-                <!--                <TableColumn fx:id="userId" prefWidth="50.0" text="userID" />-->
                 <TableColumn fx:id="balance" prefWidth="226.0" text="balance" />
             </columns>
         </TableView>
-        <Label fx:id="errorLog" layoutX="109.0" layoutY="301.0" prefHeight="27.0" prefWidth="395.0" />
+        <Label fx:id="errorLog" layoutX="185.0" layoutY="301.0" prefHeight="27.0" prefWidth="395.0" />
+        <Button layoutX="32.0" layoutY="86.0" mnemonicParsing="false" onAction="#depositAccounts" prefHeight="27.0" prefWidth="78.0" text="deposit" />
+        <Button layoutX="32.0" layoutY="141.0" mnemonicParsing="false" onAction="#withdrawalAccounts" prefHeight="27.0" prefWidth="78.0" text="withdrawal" />
     </children>
 </AnchorPane>

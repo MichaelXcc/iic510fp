@@ -42,7 +42,6 @@ public class LoginController {
             nameError.setText("User name existing");
         }
         dataMap.put("usrID", model.getId());
-        System.out.println("设置id：" + dataMap.get("usrID"));
     }
 
     public void login() {

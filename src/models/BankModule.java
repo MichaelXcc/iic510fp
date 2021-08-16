@@ -41,6 +41,9 @@ public class BankModule {
     }
 
     public Boolean updateRecords(Map<String, String> info) {
+        if (!checkInfo(info.get("updateID"))) {
+            return false;
+        }
         String updateSql = String.format("UPDATE %s SET balance=%f, updateTime='%s' where user_id='%s'",
                 "account",
                 Double.parseDouble(info.get("newBalance")),
@@ -59,13 +62,14 @@ public class BankModule {
     }
 
     public Boolean deleteRecords(Map<String, String> info) {
-        if (checkInfo(info.get("deleteID"))) {
-            return true;
+        if (!checkInfo(info.get("deleteID"))) {
+            return false;
         }
-
-        String updateSql = String.format("delete from %s where user_id='%s'",
+        System.out.println("delete");
+        String updateSql = String.format("delete from %s where user_id='%s';",
                 "account",
-                info.get("updateID"));
+                info.get("deleteID"));
+        System.out.println(updateSql);
         try {
             stmt = conn.connect().createStatement();
             stmt.executeUpdate(updateSql);
@@ -105,7 +109,7 @@ public class BankModule {
 
     public Boolean checkInfo(String userId) {
         String sql = String.format("SELECT * from %s where user_id ='%s';",
-                TableName,
+                "account",
                 userId);
 
         try {

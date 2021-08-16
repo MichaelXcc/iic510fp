@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>/Users/xuchuan/Desktop/iic/final project/FinalProject/src</OriginalElement>
+  <nodes>
+    <node x="1886.8749999999998" y="482.0">login.LoginDemoApplication</node>
+    <node x="2030.875" y="0.0">login.LoginController</node>
+    <node x="890.7916666666667" y="662.0">models.ClientModel</node>
+    <node x="878.7916666666667" y="1174.0">controllers.ClientController</node>
+    <node x="457.66666666666674" y="1064.0">controllers.AdminController</node>
+    <node x="706.7916666666667" y="773.0">models.InitDB</node>
+    <node x="517.2916666666667" y="248.0">models.UsersModule</node>
+    <node x="1892.3749999999998" y="265.0">login.LoginManager</node>
+    <node x="249.0" y="347.5">application.Main</node>
+    <node x="1023.375" y="270.5">models.BankModule</node>
+    <node x="724.6591981132076" y="0.0">models.DBConnect</node>
+    <node x="1118.0550314465409" y="11.5">utils.util</node>
+    <node x="1707.875" y="44.0">login.MainViewController</node>
+    <node x="0.0" y="1694.0">models.User</node>
+    <node x="36.5" y="739.5">application.DynamicTable</node>
+    <node x="356.79166666666674" y="684.5">controllers.LoginController</node>
+    <node x="1376.375" y="281.5">models.AccountModule</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="models.BankModule" target="models.DBConnect" relationship="TO_ONE">
+      <point x="111.0" y="-138.5" />
+      <point x="1300.875" y="198.0" />
+      <point x="1646.4658018867924" y="198.0" />
+      <point x="1646.4658018867924" y="188.0" />
+      <point x="886.3258647798743" y="188.0" />
+      <point x="64.66666666666674" y="84.0" />
+    </edge>
+    <edge source="controllers.LoginController" target="application.Main" relationship="DEPENDENCY">
+      <point x="-93.0" y="-127.5" />
+      <point x="403.29166666666674" y="641.0" />
+      <point x="331.0" y="641.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="models.AccountModule" target="models.DBConnect" relationship="CREATE">
+      <point x="-92.0" y="-127.5" />
+      <point x="1422.375" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="models.UsersModule" target="utils.util" relationship="DEPENDENCY">
+      <point x="35.875" y="-161.0" />
+      <point x="696.6666666666667" y="208.0" />
+      <point x="1265.0550314465409" y="208.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="models.UsersModule" target="models.DBConnect" relationship="TO_ONE">
+      <point x="107.625" y="-161.0" />
+      <point x="768.4166666666667" y="198.0" />
+      <point x="1646.4658018867924" y="198.0" />
+      <point x="1646.4658018867924" y="188.0" />
+      <point x="886.3258647798743" y="188.0" />
+      <point x="64.66666666666674" y="84.0" />
+    </edge>
+    <edge source="controllers.LoginController" target="models.UsersModule" relationship="TO_ONE">
+      <point x="0.0" y="-127.5" />
+      <point x="496.29166666666674" y="631.0" />
+      <point x="589.0416666666667" y="631.0" />
+      <point x="-71.75" y="161.0" />
+    </edge>
+    <edge source="controllers.AdminController" target="models.BankModule" relationship="TO_ONE">
+      <point x="57.75" y="-292.5" />
+      <point x="630.9166666666667" y="1013.0" />
+      <point x="1348.3050314465409" y="1013.0" />
+      <point x="1348.3050314465409" y="641.0" />
+      <point x="1273.125" y="641.0" />
+      <point x="83.25" y="138.5" />
+    </edge>
+    <edge source="models.ClientModel" target="models.BankModule" relationship="CREATE">
+      <point x="-73.25" y="-150.0" />
+      <point x="964.0416666666667" y="631.0" />
+      <point x="742.5416666666667" y="631.0" />
+      <point x="742.5416666666667" y="601.0" />
+      <point x="1106.625" y="601.0" />
+      <point x="-83.25" y="138.5" />
+    </edge>
+    <edge source="login.LoginController" target="login.LoginManager" relationship="DEPENDENCY">
+      <point x="-62.75" y="105.5" />
+      <point x="2093.625" y="233.0" />
+      <point x="2001.375" y="233.0" />
+      <point x="2.2737367544323206E-13" y="-83.5" />
+    </edge>
+    <edge source="models.ClientModel" target="models.AccountModule" relationship="TO_ONE">
+      <point x="73.25" y="-150.0" />
+      <point x="1110.5416666666667" y="611.0" />
+      <point x="1519.875" y="611.0" />
+      <point x="1519.875" y="591.0" />
+      <point x="1583.375" y="591.0" />
+      <point x="69.0" y="127.5" />
+    </edge>
+    <edge source="login.LoginManager" target="login.LoginController" relationship="DEPENDENCY">
+      <point x="72.66666666666674" y="-83.5" />
+      <point x="2074.0416666666665" y="243.0" />
+      <point x="2219.125" y="243.0" />
+      <point x="62.75" y="105.5" />
+    </edge>
+    <edge source="models.AccountModule" target="utils.util" relationship="DEPENDENCY">
+      <point x="0.0" y="-127.5" />
+      <point x="1514.375" y="208.0" />
+      <point x="1265.0550314465409" y="208.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="models.UsersModule" target="models.DBConnect" relationship="GENERALIZATION">
+      <point x="-35.875" y="-161.0" />
+      <point x="624.9166666666667" y="228.0" />
+      <point x="821.6591981132076" y="228.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="controllers.AdminController" target="models.BankModule" relationship="CREATE">
+      <point x="19.25" y="-292.5" />
+      <point x="592.4166666666667" y="1003.0" />
+      <point x="696.2916666666667" y="1003.0" />
+      <point x="696.2916666666667" y="631.0" />
+      <point x="742.5416666666667" y="631.0" />
+      <point x="742.5416666666667" y="601.0" />
+      <point x="1106.625" y="601.0" />
+      <point x="-83.25" y="138.5" />
+    </edge>
+    <edge source="models.InitDB" target="models.BankModule" relationship="CREATE">
+      <point x="0.0" y="-39.0" />
+      <point x="788.7916666666667" y="631.0" />
+      <point x="742.5416666666667" y="631.0" />
+      <point x="742.5416666666667" y="601.0" />
+      <point x="1106.625" y="601.0" />
+      <point x="-83.25" y="138.5" />
+    </edge>
+    <edge source="login.LoginManager" target="login.MainViewController" relationship="DEPENDENCY">
+      <point x="-72.66666666666652" y="-83.5" />
+      <point x="1928.7083333333333" y="243.0" />
+      <point x="1783.625" y="243.0" />
+      <point x="-75.75" y="61.5" />
+    </edge>
+    <edge source="login.MainViewController" target="login.LoginManager" relationship="DEPENDENCY">
+      <point x="75.75" y="61.5" />
+      <point x="1935.125" y="233.0" />
+      <point x="2001.375" y="233.0" />
+      <point x="2.2737367544323206E-13" y="-83.5" />
+    </edge>
+    <edge source="application.DynamicTable" target="application.Main" relationship="DEPENDENCY">
+      <point x="71.0" y="-72.5" />
+      <point x="249.5" y="641.0" />
+      <point x="331.0" y="641.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="models.InitDB" target="models.UsersModule" relationship="CREATE">
+      <point x="-54.66666666666663" y="-39.0" />
+      <point x="734.1250000000001" y="641.0" />
+      <point x="732.5416666666667" y="641.0" />
+      <point x="71.75" y="161.0" />
+    </edge>
+    <edge source="controllers.ClientController" target="application.Main" relationship="DEPENDENCY">
+      <point x="-132.08333333333337" y="-182.5" />
+      <point x="905.2083333333334" y="993.0" />
+      <point x="331.0" y="993.0" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="application.DynamicTable" target="models.DBConnect" relationship="CREATE">
+      <point x="-71.0" y="-72.5" />
+      <point x="107.5" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="models.InitDB" target="models.AccountModule" relationship="CREATE">
+      <point x="54.66666666666663" y="-39.0" />
+      <point x="843.4583333333334" y="621.0" />
+      <point x="1508.875" y="621.0" />
+      <point x="1508.875" y="591.0" />
+      <point x="1445.375" y="591.0" />
+      <point x="-69.0" y="127.5" />
+    </edge>
+    <edge source="models.AccountModule" target="models.DBConnect" relationship="TO_ONE">
+      <point x="92.0" y="-127.5" />
+      <point x="1606.375" y="198.0" />
+      <point x="1646.4658018867924" y="198.0" />
+      <point x="1646.4658018867924" y="188.0" />
+      <point x="886.3258647798743" y="188.0" />
+      <point x="64.66666666666674" y="84.0" />
+    </edge>
+    <edge source="controllers.LoginController" target="models.UsersModule" relationship="CREATE">
+      <point x="93.0" y="-127.5" />
+      <point x="589.2916666666667" y="641.0" />
+      <point x="732.5416666666667" y="641.0" />
+      <point x="71.75" y="161.0" />
+    </edge>
+    <edge source="controllers.AdminController" target="models.DBConnect" relationship="CREATE">
+      <point x="-96.25" y="-292.5" />
+      <point x="476.91666666666674" y="1043.0" />
+      <point x="26.0" y="1043.0" />
+      <point x="26.0" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="controllers.ClientController" target="controllers.LoginController" relationship="DEPENDENCY">
+      <point x="-79.25" y="-182.5" />
+      <point x="958.0416666666667" y="983.0" />
+      <point x="496.29166666666674" y="983.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="models.ClientModel" target="models.DBConnect" relationship="GENERALIZATION">
+      <point x="-24.416666666666742" y="-150.0" />
+      <point x="1012.875" y="228.0" />
+      <point x="821.6591981132076" y="228.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="controllers.ClientController" target="models.ClientModel" relationship="CREATE">
+      <point x="-26.416666666666742" y="-182.5" />
+      <point x="1010.875" y="1003.0" />
+      <point x="964.0416666666667" y="1003.0" />
+      <point x="-73.25" y="150.0" />
+    </edge>
+    <edge source="models.BankModule" target="models.DBConnect" relationship="CREATE">
+      <point x="-111.0" y="-138.5" />
+      <point x="1078.875" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="controllers.ClientController" target="models.ClientModel" relationship="TO_ONE">
+      <point x="26.416666666666742" y="-182.5" />
+      <point x="1063.7083333333335" y="1003.0" />
+      <point x="1110.5416666666667" y="1003.0" />
+      <point x="73.25" y="150.0" />
+    </edge>
+    <edge source="login.LoginDemoApplication" target="login.LoginManager" relationship="CREATE">
+      <point x="0.0" y="-50.0" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="controllers.AdminController" target="controllers.LoginController" relationship="DEPENDENCY">
+      <point x="-19.25" y="-292.5" />
+      <point x="553.9166666666667" y="983.0" />
+      <point x="496.29166666666674" y="983.0" />
+      <point x="0.0" y="127.5" />
+    </edge>
+    <edge source="controllers.ClientController" target="models.AccountModule" relationship="CREATE">
+      <point x="79.25" y="-182.5" />
+      <point x="1116.5416666666667" y="1023.0" />
+      <point x="1512.625" y="1023.0" />
+      <point x="1512.625" y="621.0" />
+      <point x="1508.875" y="621.0" />
+      <point x="1508.875" y="591.0" />
+      <point x="1445.375" y="591.0" />
+      <point x="-69.0" y="127.5" />
+    </edge>
+    <edge source="models.ClientModel" target="models.DBConnect" relationship="CREATE">
+      <point x="-122.08333333333337" y="-150.0" />
+      <point x="915.2083333333334" y="611.0" />
+      <point x="506.79166666666674" y="611.0" />
+      <point x="506.79166666666674" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="models.ClientModel" target="models.DBConnect" relationship="TO_ONE">
+      <point x="122.08333333333326" y="-150.0" />
+      <point x="1159.375" y="601.0" />
+      <point x="1662.875" y="601.0" />
+      <point x="1662.875" y="198.0" />
+      <point x="1646.4658018867924" y="198.0" />
+      <point x="1646.4658018867924" y="188.0" />
+      <point x="886.3258647798743" y="188.0" />
+      <point x="64.66666666666674" y="84.0" />
+    </edge>
+    <edge source="controllers.AdminController" target="models.DBConnect" relationship="TO_ONE">
+      <point x="96.25" y="-292.5" />
+      <point x="669.4166666666667" y="1043.0" />
+      <point x="1662.875" y="1043.0" />
+      <point x="1662.875" y="198.0" />
+      <point x="1646.4658018867924" y="198.0" />
+      <point x="1646.4658018867924" y="188.0" />
+      <point x="886.3258647798743" y="188.0" />
+      <point x="64.66666666666674" y="84.0" />
+    </edge>
+    <edge source="models.BankModule" target="utils.util" relationship="DEPENDENCY">
+      <point x="0.0" y="-138.5" />
+      <point x="1189.875" y="208.0" />
+      <point x="1265.0550314465409" y="208.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="controllers.ClientController" target="models.AccountModule" relationship="TO_ONE">
+      <point x="132.08333333333326" y="-182.5" />
+      <point x="1169.375" y="1033.0" />
+      <point x="1523.625" y="1033.0" />
+      <point x="1523.625" y="611.0" />
+      <point x="1519.875" y="611.0" />
+      <point x="1519.875" y="591.0" />
+      <point x="1583.375" y="591.0" />
+      <point x="69.0" y="127.5" />
+    </edge>
+    <edge source="models.UsersModule" target="models.DBConnect" relationship="CREATE">
+      <point x="-107.625" y="-161.0" />
+      <point x="553.1666666666667" y="218.0" />
+      <point x="480.6875" y="218.0" />
+      <point x="480.6875" y="198.0" />
+      <point x="756.9925314465409" y="198.0" />
+      <point x="-64.66666666666663" y="84.0" />
+    </edge>
+    <edge source="models.ClientModel" target="models.BankModule" relationship="TO_ONE">
+      <point x="24.416666666666742" y="-150.0" />
+      <point x="1061.7083333333335" y="641.0" />
+      <point x="1273.125" y="641.0" />
+      <point x="83.25" y="138.5" />
+    </edge>
+    <edge source="controllers.AdminController" target="application.DynamicTable" relationship="CREATE">
+      <point x="-57.75" y="-292.5" />
+      <point x="515.4166666666667" y="1033.0" />
+      <point x="178.5" y="1033.0" />
+      <point x="0.0" y="72.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.48543170874386504" showDependencies="true" x="878.1172707924613" y="668.6775793477744" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

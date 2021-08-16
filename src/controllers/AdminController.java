@@ -73,6 +73,8 @@ public class AdminController {
         if (bm.insertRecords(dataMap)) {
             logError.setText("user already exists ");
         }
+        logError.setText("add succeed");
+
     }
 
     public void submitUpdate() {
@@ -83,6 +85,7 @@ public class AdminController {
             logError.setText("update error");
             return;
         }
+        logError.setText("Update succeed");
         System.out.println("Update Submit button pressed");
     }
 
@@ -93,6 +96,7 @@ public class AdminController {
             logError.setText("delete error");
             return;
         }
+        logError.setText("delete succeed");
         System.out.println("Delete Submit button pressed");
 
     }
